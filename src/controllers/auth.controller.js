@@ -61,7 +61,7 @@ export const login = async (req, res) => {
 
         const token = jwt.sign(payload, privateKey, {
             algorithm: "RS256",
-            expiresIn: process.env.JWT_PAYLOAD
+            expiresIn: process.env.JWT_EXPIRATION
         })
 
         res.status(201).json({ token });
