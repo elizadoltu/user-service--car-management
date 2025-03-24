@@ -10,8 +10,8 @@ const authorizeClient = (req, res, next) => {
     next();
 };
 
-userRouter.get('/profile', authMiddleware, authorizeClient, getUserProfile);
-userRouter.put('/profile', authMiddleware, authorizeClient, updateUserProfile);
-userRouter.delete('/profile', authMiddleware, authorizeClient, deleteUserProfile);
+userRouter.get('/profile', authMiddleware, getUserProfile);
+userRouter.put('/profile', authMiddleware, updateUserProfile);
+userRouter.delete('/profile', authMiddleware, deleteUserProfile);
 
 export default userRouter;
