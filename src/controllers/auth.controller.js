@@ -26,7 +26,7 @@ export const register = async (req, res) => {
         await newUser.save();
 
         const payload = {
-            id: newUser._id,
+            id: newUser.id,
             username: newUser.username,
             email: newUser.email,
             role: 'client'
@@ -56,7 +56,7 @@ export const login = async (req, res) => {
         }
 
         const payload = {
-            id: user._id,
+            sub: user.id,
             username: user.username,
             email: user.email,
             role: 'client'
@@ -93,7 +93,7 @@ export const loginAdmin = async (req, res) => {
         }
 
         const payload = {
-            sub: admin._id, 
+            sub: admin.id, 
             username: admin.username,
             role: 'admin'
         };
@@ -110,7 +110,7 @@ export const loginAdmin = async (req, res) => {
         res.status(200).json({  
             token,
             admin: {
-                id: admin._id,
+                id: admin.id,
                 username: admin.username
             }
         });
@@ -141,7 +141,7 @@ export const registerAdmin = async (req, res) => {
 
         await newAdmin.save();
         const payload = {
-            sub: newAdmin._id,
+            sub: newAdmin.id,
             username: newAdmin.username,
             role: 'admin'
         };
@@ -158,7 +158,7 @@ export const registerAdmin = async (req, res) => {
             message: 'Admin registered successfully',
             token,
             admin: {
-                id: newAdmin._id,
+                id: newAdmin.id,
                 username: newAdmin.username,
                 email: newAdmin.email
             }
