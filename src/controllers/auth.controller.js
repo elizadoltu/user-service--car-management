@@ -100,7 +100,7 @@ export const loginAdmin = async (req, res) => {
 
         const token = jwt.sign(
             payload,
-            process.env.PRIVATE_KEY.replace(/\\n/g, '\n'), 
+            privateKey,
             { 
                 algorithm: 'RS256',
                 expiresIn: process.env.JWT_EXPIRATION || '1h',
