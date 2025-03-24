@@ -2,7 +2,9 @@ import express from "express"
 import cors from 'cors'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
-import userRouter from "./src/routes/auth.routes.js"
+import userRouter from "./src/routes/user.routes.js"
+import authRouter from './src/routes/auth.routes.js'
+import adminRouter from "./src/routes/admin.routes.js"
 import { connectUserDB } from "./src/database/userDatabase.js"
 
 dotenv.config();
@@ -34,6 +36,8 @@ app.use(cors({
 app.use(bodyParser.json());
 connectUserDB();
 app.use('/api', userRouter);
+app.use('/api', authRouter);
+app.use('/api', adminRouter);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
