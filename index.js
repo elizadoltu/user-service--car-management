@@ -13,7 +13,8 @@ const app = express();
 const PORT = 3333;
 
 const allowedOrigins = [
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'https://car-management-app-cloud-comput-production.up.railway.app'
 ];
 
 app.use(cors({
